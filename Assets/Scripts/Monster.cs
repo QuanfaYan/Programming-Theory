@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    [SerializeField] int health = 10;
+    [SerializeField] protected int health = 10;
     [SerializeField] int power = 2;
     [SerializeField] float speed = 0.5f;
     [SerializeField] bool m_isMoving = true;
@@ -30,7 +30,7 @@ public class Monster : MonoBehaviour
     private Monster waitTarget = null;
     public event System.Action OnDestroyed;
     private Grid locateGrid = null;
-    private Animator animator;
+    protected Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -57,21 +57,16 @@ public class Monster : MonoBehaviour
         Bullet bullet = other.GetComponent<Bullet>();
         if(bullet != null)
         {
-            if (animator)
+            HitByBullet(bullet);
+        }
+        else if(other.GetComponent<Laser>())
+        {
+            if(animator)
             {
-                animator.Play("GetHit");
-                //animator.SetTrigger("hit");
+                animator.SetBool("isLiving", false);
             }
-            health -= bullet.GetBulletPower();
-            if(health <= 0)
-            {
-                if (animator)
-                {
-                    animator.SetBool("isLiving", false);
-                }
-                Destroy(gameObject);
-            }
-            Destroy(other.gameObject);
+
+            StartCoroutine("DestroyCoroutine");
         }
         else
         {
@@ -148,6 +143,12 @@ public class Monster : MonoBehaviour
         }
     }
 
+    IEnumerator DestroyCoroutine()
+    {
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
+    }
+
     private void Attack()
     {
         if(animator)
@@ -175,5 +176,23 @@ public class Monster : MonoBehaviour
         {
             animator.Play("Victory");
         }
+    }
+
+    public virtual void HitByBullet(Bullet bullet)
+    {
+        if (animator)
+        {
+            animator.Play("GetHit");
+        }
+        health -= bullet.GetBulletPower();
+        if (health <= 0)
+        {
+            if (animator)
+            {
+                animator.SetBool("isLiving", false);
+            }
+            Destroy(gameObject);
+        }
+        Destroy(bullet.gameObject);
     }
 }

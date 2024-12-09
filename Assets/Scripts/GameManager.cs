@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
             if(value == false && m_isGameRunning == true)
             {
                 CancelInvoke("SpawnEnemy");
-
+                
                 // all human stop working
                 foreach(GameObject line in lines)
                 {
@@ -46,6 +46,10 @@ public class GameManager : MonoBehaviour
                         if(isWin)
                         {
                             human.Celebrate();
+                        }
+                        else
+                        {
+                            human.Freeze();
                         }
                     }
                 }

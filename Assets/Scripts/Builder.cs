@@ -46,7 +46,15 @@ public class Builder : Human
     {
         Debug.Log("Builder Celebrate");
         CancelInvoke("Build");
-        animator.Play("Celebrate");
+        if(animator)
+        {
+            animator.Play("Celebrate");
+            animator.SetBool("isWin", true);
+        }
+        else
+        {
+            Debug.Log("empty animator");
+        }
     }
 
     public override void StopWorking()

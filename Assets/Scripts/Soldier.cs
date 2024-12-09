@@ -38,7 +38,15 @@ public class Soldier : Human
     {
         Debug.Log("Soldier Celebrate");
         CancelInvoke("Fire");
-        animator.Play("Celebrate");
+        if(animator)
+        {
+            animator.Play("Celebrate");
+            animator.SetBool("isWin", true);
+        }
+        else
+        {
+            Debug.Log("empty animator");
+        }
     }
 
     public override void StopWorking()

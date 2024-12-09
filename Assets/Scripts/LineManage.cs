@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class LineManage : MonoBehaviour
 {
+    public Mask cannonMask;
+    public GameObject Laser;
     private int buildProgress = 0;
+    private bool defendState = false;
     const int SUCCESS = 100;
     const float SPAWN_POS_X = 8.5f;
     const float RANGE_POS_X = 1.5f;
-    private bool defendState = false;
 
 
     // Start is called before the first frame update
@@ -26,6 +28,7 @@ public class LineManage : MonoBehaviour
     public void UpdateProgress(int modVal)
     {
         buildProgress += modVal;
+        cannonMask.progress += modVal;
         if(buildProgress >= SUCCESS)
         {
             StartDefend();
@@ -35,13 +38,15 @@ public class LineManage : MonoBehaviour
     void StartDefend()
     {
         // destroy all the monster on the line
+        /*
         Monster[] monsters = GetComponentsInChildren<Monster>();
         foreach (Monster monster in monsters)
         {
             Destroy(monster.gameObject);
-        }
+        }*/
 
         // set defendState True
+        Laser.SetActive(true);
         defendState = true;
 
         // Soldiers and builders on the line stop working to celebrate;
@@ -82,4 +87,6 @@ public class LineManage : MonoBehaviour
         }
         return new Vector3(SPAWN_POS_X, 0, transform.position.z);
     }
+
+
 }

@@ -58,4 +58,9 @@ public class Human : MonoBehaviour
         Debug.Log("Human StopWorking");
         CancelInvoke();
     }
+
+    public void Freeze()
+    {
+        animator.enabled = false;
+    }
 }
