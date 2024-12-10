@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class Soldier : Human
 {
     [SerializeField] float fireInterval;
@@ -13,6 +14,7 @@ public class Soldier : Human
     void Start()
     {
         animator = GetComponent<Animator>();
+        // ABSTRACTION
         InvokeRepeating("Fire", 0, fireInterval);
     }
 
@@ -34,6 +36,7 @@ public class Soldier : Human
         }
     }
 
+    // POLYMORPHISM
     public override void Celebrate()
     {
         Debug.Log("Soldier Celebrate");
@@ -49,6 +52,7 @@ public class Soldier : Human
         }
     }
 
+    // POLYMORPHISM
     public override void StopWorking()
     {
         Debug.Log("Soldier StopWorking");

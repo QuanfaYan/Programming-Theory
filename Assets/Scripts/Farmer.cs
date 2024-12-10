@@ -2,21 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class Farmer : Human
 {
-    // Start is called before the first frame update
+    
     public int productFoodInterval = 1;
-    /*private Animator animator;*/
+    
     void Start()
     {
         animator = GetComponent<Animator>();
+        // ABSTRACTION
         InvokeRepeating("ProductFood", 0, productFoodInterval);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void ProductFood()
@@ -24,6 +20,7 @@ public class Farmer : Human
         GameManager.instance.food += 1;
     }
 
+    // POLYMORPHISM
     public override void  Celebrate()
     {
         Debug.Log("Farmer Celebrate");
@@ -39,6 +36,7 @@ public class Farmer : Human
         }
     }
 
+    // POLYMORPHISM
     public override void StopWorking()
     {
         Debug.Log("Farmer StopWorking");

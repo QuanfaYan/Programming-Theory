@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class MonsterWithShell : Monster
 {
     [SerializeField] private int shellHealth = 16;
-    // Start is called before the first frame update
+
+    // POLYMORPHISM
     public override void HitByBullet(Bullet bullet)
     {
         if(shellHealth > 0)

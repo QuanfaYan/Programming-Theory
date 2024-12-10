@@ -11,12 +11,6 @@ public class EnemyDetect : MonoBehaviour
         monster = GetComponentInParent<Monster>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("Enter" + other.gameObject.ToString());

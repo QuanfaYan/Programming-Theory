@@ -7,8 +7,10 @@ public class Mask : MonoBehaviour
     // Start is called before the first frame update
     public float minPosY = 1.1f;
     public float maxPosY = 5.48f;
-    private float m_progress = 0.0f;
     private Vector3 curPos;
+
+    // ENCAPSULATION
+    private float m_progress = 0.0f;
     public float progress
     {
         get 
@@ -22,11 +24,6 @@ public class Mask : MonoBehaviour
             {
                 if(m_progress < value)
                 {
-                    /*
-                    Vector3 distance = ( value- m_progress) * (maxPosY - minPosY) / 100f * Vector3.up;
-                    Debug.Log(distance.ToString());
-                    transform.Translate(distance, Space.World);
-                    */
                     curPos.y = value / 100f * (maxPosY - minPosY) + minPosY;
                     transform.localPosition = curPos;
                 }
@@ -46,12 +43,6 @@ public class Mask : MonoBehaviour
     void Start()
     {
         curPos = transform.localPosition;
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
     }
 
     void CastShadow()

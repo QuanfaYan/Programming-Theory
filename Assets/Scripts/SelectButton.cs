@@ -39,12 +39,6 @@ public class SelectButton : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void SetGreen()
     {
         buttonImg.color = new Color(0f, 1f, 0f, 1f);

@@ -8,7 +8,8 @@ public class Monster : MonoBehaviour
     [SerializeField] int power = 2;
     [SerializeField] float speed = 0.5f;
     [SerializeField] bool m_isMoving = true;
-        
+
+    // ENCAPSULATION
     public bool isMoving
     {
         get 

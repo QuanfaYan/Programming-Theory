@@ -6,11 +6,6 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float speed = 1.5f;
     [SerializeField] int power = 2;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

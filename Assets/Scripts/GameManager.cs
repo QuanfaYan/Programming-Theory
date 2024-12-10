@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     List<GameObject> spawnLines;
     public int initFood = 100;
     private bool isWin = false;
+
+    // ENCAPSULATION
     private bool m_isGameRunning = true;
     public bool isGameRunning
     {
@@ -63,6 +65,8 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] float spawnInterval = 5.0f;
     private GameObject currentSelectGrid;
+
+    // ENCAPSULATION
     private int m_food;
     public int food
     {
@@ -117,7 +121,6 @@ public class GameManager : MonoBehaviour
         m_food = initFood;
         spawnLines = new List<GameObject>(lines);
         InvokeRepeating("SpawnEnemy", 1.0f, spawnInterval);
-        //Time.timeScale = 0.1f;
     }
 
     // Update is called once per frame
@@ -170,8 +173,6 @@ public class GameManager : MonoBehaviour
             if (lineManage)
             {
                 Vector3 pos = lineManage.GetSpawnPos();
-                //Vector3 pos = new Vector3(spawnPosX, 0, line.transform.position.z);
-
                 Instantiate(enemy, pos, Quaternion.AngleAxis(270f, Vector3.up), line.transform);
             }
             else
@@ -254,33 +255,15 @@ public class GameManager : MonoBehaviour
 
     void Win()
     {
-        // all the farmer celebrate
-        /*
-        foreach(GameObject line in lines)
-        {
-            Farmer[] farmers = line.GetComponentsInChildren<Farmer>();
-            if(farmers.Length > 0)
-            {
-                foreach(Farmer farmer in farmers)
-                {
-                    farmer.Celebrate();
-                }
-            }
-        }*/
-
-        //Debug.Log("Victory!");
         UIManager.instance.SetWinText(true);
         isWin = true;
         isGameRunning = false;
-        //Time.timeScale = 0;
     }
 
     public void GameOver()
     {
-        //Debug.Log("GameOver!");
         UIManager.instance.SetLoseText(true);
         isWin = false;
         isGameRunning = false;
-        //Time.timeScale = 0;
     }
 }
