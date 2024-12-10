@@ -10,17 +10,6 @@ public class Human : MonoBehaviour
     public bool isAttacked = false;
     public event System.Action OnDestroyed;
     protected Animator animator;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnDestroy()
     {

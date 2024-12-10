@@ -268,7 +268,8 @@ public class GameManager : MonoBehaviour
             }
         }*/
 
-        Debug.Log("Victory!");
+        //Debug.Log("Victory!");
+        UIManager.instance.SetWinText(true);
         isWin = true;
         isGameRunning = false;
         //Time.timeScale = 0;
@@ -276,7 +277,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("GameOver!");
+        //Debug.Log("GameOver!");
+        UIManager.instance.SetLoseText(true);
         isWin = false;
         isGameRunning = false;
         //Time.timeScale = 0;
